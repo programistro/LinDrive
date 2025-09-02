@@ -8,24 +8,24 @@
         <FluentTheme />
     </Application.Styles>
              
-    <TrayIcon.Icons>
-        <TrayIcons>
-            <TrayIcon Icon="/Assets/avalonia-logo.ico" 
-                      ToolTipText="Avalonia Tray Icon ToolTip">
-                <TrayIcon.Menu>
-                    <NativeMenu>
-                        <NativeMenuItem Header="Settings">
-                            <NativeMenu>
-                                <NativeMenuItem Header="Option 1"   />
-                                <NativeMenuItem Header="Option 2"   />
-                                <NativeMenuItemSeparator />
-                                <NativeMenuItem Header="Option 3"  />
-                            </NativeMenu>
-                        </NativeMenuItem>
-                        <NativeMenuItem Header="Exit" Click="ExitClick" />
-                    </NativeMenu>
-                </TrayIcon.Menu>
-            </TrayIcon>
-        </TrayIcons>
-    </TrayIcon.Icons>
+    <!-- <TrayIcon.Icons> -->
+    <!--     <TrayIcons> -->
+    <!--         <TrayIcon Icon="/Assets/avalonia-logo.ico"  -->
+    <!--                   ToolTipText="Avalonia Tray Icon ToolTip"> -->
+    <!--             <TrayIcon.Menu> -->
+    <!--                 <NativeMenu> -->
+    <!--                     <NativeMenuItem Header="Settings"> -->
+    <!--                         <NativeMenu> -->
+    <!--                             <NativeMenuItem Header="Option 1"   /> -->
+    <!--                             <NativeMenuItem Header="Option 2"   /> -->
+    <!--                             <NativeMenuItemSeparator /> -->
+    <!--                             <NativeMenuItem Header="Option 3"  /> -->
+    <!--                         </NativeMenu> -->
+    <!--                     </NativeMenuItem> -->
+    <!--                     <NativeMenuItem Header="Exit" Click="ExitClick" /> -->
+    <!--                 </NativeMenu> -->
+    <!--             </TrayIcon.Menu> -->
+    <!--         </TrayIcon> -->
+    <!--     </TrayIcons> -->
+    <!-- </TrayIcon.Icons> -->
 </Application>

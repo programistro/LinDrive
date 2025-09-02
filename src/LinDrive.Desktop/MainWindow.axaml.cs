@@ -11,7 +11,7 @@ public partial class MainWindow : Window
     
     public MainWindow()
     {
-        _watcher = App.ServiceProvider.GetRequiredService(typeof(FileWatcherService));
+        _watcher = App.ServiceProvider.GetRequiredService<FileWatcherService>();
         
         InitializeComponent();
     }

@@ -9,12 +9,18 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Scalar.AspNetCore" Version="2.7.2" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+      <ProjectReference Include="..\..\LinDrive.Infrastructure\LinDrive.Infrastructure.csproj" />
+      <ProjectReference Include="..\LinDrive.Application\LinDrive.Application.csproj" />
+      <ProjectReference Include="..\LinDrive.Contracts\LinDrive.Contracts.csproj" />
+      <ProjectReference Include="..\LinDrive.Core\LinDrive.Core.csproj" />
     </ItemGroup>
 
 </Project>

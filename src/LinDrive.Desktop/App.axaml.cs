@@ -18,15 +18,14 @@ public partial class App : Avalonia.Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        var services = new ServiceCollection();
+        services.AddServices();
+        ServiceProvider = services.BuildServiceProvider();
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow();
         }
-
-        var services = new ServiceCollection();
-        services.AddServices();
-        ServiceProvider = services.BuildServiceProvider();
-
         base.OnFrameworkInitializationCompleted();
     }
 

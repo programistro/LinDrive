@@ -1,11 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using LinDrive.Application.IO.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LinDrive.Application.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static void AddServices(this IServiceCollection services)
+    public static IServiceCollection AddServices(this IServiceCollection services)
     {
-        services.AddScoped<FileSystemWatcher>();
+        services.AddLogging();
+        services.AddSingleton<FileWatcherService>();
+        
+        return services;
     }
 }
