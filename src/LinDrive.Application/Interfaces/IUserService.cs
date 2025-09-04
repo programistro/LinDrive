@@ -16,5 +16,5 @@ public interface IUserService
     
     Task<IEnumerable<User>> GetAllAsync(CancellationToken cancellationToken);
     
-    Task<string> CreatePasswordHash(string password);
+    string CreatePasswordHash(string password);
 }

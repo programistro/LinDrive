@@ -12,13 +12,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinDrive.Core", "src\LinDri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinDrive.Contracts", "src\LinDrive.Contracts\LinDrive.Contracts.csproj", "{2025FA53-617C-4CEC-B33D-1681CE8602C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinDrive.Infrastructure", "LinDrive.Infrastructure\LinDrive.Infrastructure.csproj", "{A74AA2A0-0299-4371-8039-8EA721BF8497}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{7971E4CA-04D0-4E08-9554-0C8FED9111EE}"
 	ProjectSection(SolutionItems) = preProject
 		Dockerfile = Dockerfile
 		src\.dockerignore = src\.dockerignore
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinDrive.Infrastructure", "src\LinDrive.Infrastructure\LinDrive.Infrastructure.csproj", "{47A7B999-EB7F-404F-B6A7-EEA362417B40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,10 +46,10 @@ Global
 		{2025FA53-617C-4CEC-B33D-1681CE8602C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2025FA53-617C-4CEC-B33D-1681CE8602C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2025FA53-617C-4CEC-B33D-1681CE8602C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A74AA2A0-0299-4371-8039-8EA721BF8497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A74AA2A0-0299-4371-8039-8EA721BF8497}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A74AA2A0-0299-4371-8039-8EA721BF8497}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A74AA2A0-0299-4371-8039-8EA721BF8497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47A7B999-EB7F-404F-B6A7-EEA362417B40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A7B999-EB7F-404F-B6A7-EEA362417B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A7B999-EB7F-404F-B6A7-EEA362417B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A7B999-EB7F-404F-B6A7-EEA362417B40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{53370191-6A12-43BC-ADBF-A0A8E7E10684} = {B0715F59-8FEA-4945-9501-6239C1E9155A}
@@ -57,6 +57,6 @@ Global
 		{FC3CE6D9-D224-431D-A799-70F2E08B67E2} = {B0715F59-8FEA-4945-9501-6239C1E9155A}
 		{F2AB260A-8C6B-4C9C-8ACB-51EB9E7C01F2} = {B0715F59-8FEA-4945-9501-6239C1E9155A}
 		{2025FA53-617C-4CEC-B33D-1681CE8602C0} = {B0715F59-8FEA-4945-9501-6239C1E9155A}
-		{A74AA2A0-0299-4371-8039-8EA721BF8497} = {B0715F59-8FEA-4945-9501-6239C1E9155A}
+		{47A7B999-EB7F-404F-B6A7-EEA362417B40} = {B0715F59-8FEA-4945-9501-6239C1E9155A}
 	EndGlobalSection
 EndGlobal

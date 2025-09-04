@@ -16,7 +16,14 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\LinDrive.Core\LinDrive.Core.csproj" />
       <ProjectReference Include="..\src\LinDrive.Core\LinDrive.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.IdentityModel.Tokens">
+        <HintPath>..\..\..\..\.nuget\packages\microsoft.identitymodel.tokens\8.0.1\lib\net9.0\Microsoft.IdentityModel.Tokens.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>
