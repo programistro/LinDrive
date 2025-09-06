@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LinDrive.Web.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class MediaController : ControllerBase
@@ -56,8 +57,21 @@ public class MediaController : ControllerBase
                 return NotFound("Пользователь с указанным id не найден.");
 
             var findUser = await _userService.GetByIdAsync(findUserId.Value, cancellationToken);
+            
+            var path = $@"files/{findUser.Email}/{name}";
 
-            return Ok(findUser.ToResponseDto());
+            if (!System.IO.File.Exists(path))
+                return NotFound();
+
+            var memoryStream = new MemoryStream();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                await stream.CopyToAsync(memoryStream);
+            }
+            memoryStream.Position = 0;
+
+            var contentType = "application/octet-stream";
+            return File(memoryStream, contentType, name);
         }
         else
             return Unauthorized("Token not fonud in cookie");
