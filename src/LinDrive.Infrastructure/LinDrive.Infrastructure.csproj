@@ -17,7 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\LinDrive.Core\LinDrive.Core.csproj" />
-      <ProjectReference Include="..\src\LinDrive.Core\LinDrive.Core.csproj" />
+      <ProjectReference Include="..\LinDrive.Core\LinDrive.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>

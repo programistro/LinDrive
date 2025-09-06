@@ -1,5 +1,13 @@
+using Atlant.Application.Interfaces;
+using Atlant.Infractructure.Repositories;
+using LinDrive.Application.Interfaces;
+using LinDrive.Application.Services;
+using LinDrive.Application.Services.IO.Interfaces;
+using LinDrive.Application.Services.IO.Services;
+using LinDrive.Core.Interfaces;
 using LinDrive.Infrastructure;
 using LinDrive.Infrastructure.Data;
+using LinDrive.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -50,3 +58,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+void ConfigureServices(IServiceCollection services)
+{
+    services.AddScoped<IAccessTokenRepository, AccessTokenRepository>();
+    services.AddScoped<IAccessTokenService, AccessTokenService>();
+    services.AddScoped<ITokenService, TokenService>();
+    services.AddScoped<IUserRepository, UserRepository>();
+    services.AddScoped<IUserService, UserService>();
+    services.AddScoped<IMediaService, MediaService>();
+}
