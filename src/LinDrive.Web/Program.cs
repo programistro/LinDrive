@@ -8,6 +8,7 @@ using LinDrive.Core.Interfaces;
 using LinDrive.Infrastructure;
 using LinDrive.Infrastructure.Data;
 using LinDrive.Infrastructure.Repositories;
+using LinDrive.Web;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -42,9 +43,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString)
 );
-
 builder.Services.AddOpenApi();
 
+builder.Services.ConfigureServices();
 var app = builder.Build();
 
 app.MapOpenApi();
@@ -58,13 +59,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-void ConfigureServices(IServiceCollection services)
-{
-    services.AddScoped<IAccessTokenRepository, AccessTokenRepository>();
-    services.AddScoped<IAccessTokenService, AccessTokenService>();
-    services.AddScoped<ITokenService, TokenService>();
-    services.AddScoped<IUserRepository, UserRepository>();
-    services.AddScoped<IUserService, UserService>();
-    services.AddScoped<IMediaService, MediaService>();
-}
