@@ -13,4 +13,8 @@ public class User
     public string PasswordHash { get; set; }
 
     public List<UserFile> Files = new List<UserFile>();
+    
+    public string? AccessToken { get; set; }
+
+    public ICollection<AccessToken> AccessTokens { get; set; } = new List<AccessToken>();
 }

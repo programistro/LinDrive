@@ -18,4 +18,14 @@ public class AppDbContext : DbContext
     }
     
     public DbSet<User> Users { get; set; }
+    
+    public DbSet<AccessToken> AccessTokens { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>()
+            .HasMany(u => u.AccessTokens)
+            .WithOne(a => a.User)
+            .IsRequired();
+    }
 }

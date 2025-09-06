@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace LinDrive.Application.IO.Services;
+namespace LinDrive.Application.Services.IO.Services;
 
 public class FileWatcherService : IDisposable
 {

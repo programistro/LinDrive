@@ -1,7 +1,7 @@
-using LinDrive.Application.IO.Interfaces;
+using LinDrive.Application.Services.IO.Interfaces;
 using LinDrive.Contracts.Dtos.IO;
 
-namespace LinDrive.Application.IO.Services;
+namespace LinDrive.Application.Services.IO.Services;
 
 public class MediaService : IMediaService
 {

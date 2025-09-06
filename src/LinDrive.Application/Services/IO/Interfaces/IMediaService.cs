@@ -1,6 +1,6 @@
 using LinDrive.Contracts.Dtos.IO;
 
-namespace LinDrive.Application.IO.Interfaces;
+namespace LinDrive.Application.Services.IO.Interfaces;
 
 public interface IMediaService
 {
