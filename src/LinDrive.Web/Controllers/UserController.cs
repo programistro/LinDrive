@@ -1,7 +1,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using LinDrive.Application.Interfaces;
+using LinDrive.Application.IO.Interfaces;
 using LinDrive.Contracts.Dtos;
+using LinDrive.Contracts.Dtos.IO;
 using LinDrive.Core.Models;
 using LinDrive.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
@@ -51,8 +53,8 @@ public class UserController : ControllerBase
         
         if(findUser == null)
             return NotFound();
-        
-        var claims = new List<Claim> {new Claim(ClaimTypes.Email, findUser.Email) };
+
+        var claims = new List<Claim> { new Claim(ClaimTypes.Email, findUser.Email) };
         
         var jwt = new JwtSecurityToken(
             issuer: AuthOptions.ISSUER,
@@ -64,11 +66,5 @@ public class UserController : ControllerBase
         var token= new JwtSecurityTokenHandler().WriteToken(jwt);
         
         return Ok(jwt);
-    }
-    
-    [HttpPost]
-    public async Task<IActionResult> UploadFile()
-    {
-        return Ok();
     }
 }

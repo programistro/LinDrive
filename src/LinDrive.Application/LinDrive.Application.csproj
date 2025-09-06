@@ -11,10 +11,14 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\LinDrive.Contracts\LinDrive.Contracts.csproj" />
       <ProjectReference Include="..\LinDrive.Core\LinDrive.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <Reference Include="Microsoft.AspNetCore.Http.Features">
+        <HintPath>..\..\..\..\.nuget\packages\microsoft.aspnetcore.app.ref\9.0.8\ref\net9.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+      </Reference>
       <Reference Include="Microsoft.Extensions.Caching.Abstractions">
         <HintPath>..\..\..\..\.nuget\packages\microsoft.aspnetcore.app.ref\9.0.8\ref\net9.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
       </Reference>
