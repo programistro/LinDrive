@@ -1,5 +1,3 @@
-using Atlant.Application.Interfaces;
-using Atlant.Infractructure.Repositories;
 using LinDrive.Application.Interfaces;
 using LinDrive.Application.Services;
 using LinDrive.Application.Services.IO.Interfaces;
@@ -11,13 +9,26 @@ namespace LinDrive.Web;
 
 public static class ConfigureBuilder
 {
-    public static void ConfigureServices(this IServiceCollection services)
+    public static IServiceCollection ConfigureServices(this IServiceCollection services)
+    {
+        services.AddScoped<IAccessTokenService, AccessTokenService>();
+        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IMediaService, MediaService>();
+
+        return services;
+    }
+
+    public static IServiceCollection ConfigureRepositories(this IServiceCollection services)
     {
         services.AddScoped<IAccessTokenRepository, AccessTokenRepository>();
         services.AddScoped<IAccessTokenService, AccessTokenService>();
-        services.AddScoped<ITokenService, TokenService>();
-        services.AddScoped<IUserRepository, UserRepository>();
-        services.AddScoped<IUserService, UserService>();
-        services.AddScoped<IMediaService, MediaService>();
+
+        return services;
+    }
+    
+    public static IServiceCollection ConfigureValidatos(this IServiceCollection services)
+    {
+        return services;
     }
 }

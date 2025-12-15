@@ -1,6 +1,6 @@
 using LinDrive.Core.Models;
 
-namespace Atlant.Application.Interfaces;
+namespace LinDrive.Application.Interfaces;
 
 public interface IAccessTokenService
 {

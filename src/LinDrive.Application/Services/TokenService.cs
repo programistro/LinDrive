@@ -37,7 +37,7 @@ public class TokenService : ITokenService
     
     public async Task<Result<AccessToken>> ValidateToken(string token, CancellationToken cancellationToken)
     {
-        var findToken = await _accessTokenRepository.GetByAsync(token, cancellationToken);
+        var findToken = await _accessTokenRepository.GetTokenAsync(token, cancellationToken);
 
         if (findToken == null)
             return Result<AccessToken>.Failure("Token not found");
@@ -99,7 +99,7 @@ public class TokenService : ITokenService
 
     public async Task DeleteTokenAsync(string token, CancellationToken cancellationToken)
     {
-        var findToken = await _accessTokenRepository.GetByAsync(token, cancellationToken);
+        var findToken = await _accessTokenRepository.GetTokenAsync(token, cancellationToken);
 
         if (findToken == null)
             return;
