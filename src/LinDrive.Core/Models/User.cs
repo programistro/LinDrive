@@ -10,11 +10,13 @@ public class User
     
     public string Email { get; set; }
     
-    public string PasswordHash { get; set; }
+    public string SeedHash { get; set; }
+    
+    public string SeedSalt { get; set; }
 
     public List<UserFile> Files = new List<UserFile>();
     
     public string? AccessToken { get; set; }
 
-    public ICollection<AccessToken> AccessTokens { get; set; } = new List<AccessToken>();
+    public ICollection<string> AccessTokens { get; set; } = new List<string>();
 }

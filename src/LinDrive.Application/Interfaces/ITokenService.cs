@@ -1,23 +1,22 @@
 using LinDrive.Application.Results;
+using LinDrive.Contracts.Dtos;
 using LinDrive.Core.Models;
 
 namespace LinDrive.Application.Interfaces;
 
 public interface ITokenService
 {
-    Task<AccessToken> ValidateTokenById(Guid id, CancellationToken cancellationToken);
-    
     Task<Result<AccessToken>> ValidateToken(string token, CancellationToken cancellationToken);
     
-    Task<string> GenerateToken(User user, CancellationToken cancellationToken);
+    Task<AccessToken> GenerateToken(User user, UserAgent agent, CancellationToken cancellationToken);
 
-    string GenerateJwtToken(string email, Guid userId);
+    public string GenerateJwtToken(User user);
     
-    Guid? GetUserIdFromToken(string token, CancellationToken cancellationToken);
-
-    Task DeleteTokenByIdAsync(Guid id, CancellationToken cancellationToken);
+    string? GetUserIdFromToken(string token, CancellationToken cancellationToken);
+    
+    string? GetRoleFromToken(string token, CancellationToken cancellationToken);
     
     Task DeleteTokenAsync(string token, CancellationToken cancellationToken);
 
-    Task<IEnumerable<AccessToken>> GetTokensByUserIdAsync(Guid userId, CancellationToken cancellationToken);
+    Task<IEnumerable<string>> GetTokensByUserIdAsync(Guid userId, CancellationToken cancellationToken);
 }

@@ -33,7 +33,7 @@ public class UserController : ControllerBase
             User newUser = new()
             {
                 Email = dto.Email,
-                PasswordHash = _userService.CreatePasswordHash(dto.Password),
+                SeedHash = _userService.CreatePasswordHash(dto.Password),
                 Id = Guid.NewGuid(),
             };
             

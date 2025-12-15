@@ -27,7 +27,7 @@ public class AccessTokenRepository : IAccessTokenRepository
         _cache = cache;
     }
 
-    public async Task<Result<AccessToken>?> GetTokenAsync(string token, CancellationToken cancellationToken)
+    public async Task<Result<AccessToken>?> GetByTokenAsync(string token, CancellationToken cancellationToken)
     {
         var findString =  await _cache.GetStringAsync(token, cancellationToken);
         if(string.IsNullOrWhiteSpace(findString))

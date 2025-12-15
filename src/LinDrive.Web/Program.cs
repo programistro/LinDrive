@@ -10,6 +10,7 @@ using LinDrive.Infrastructure.Data;
 using LinDrive.Infrastructure.Repositories;
 using LinDrive.Web;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Minio;
@@ -80,21 +81,33 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString)
 );
-builder.Services.AddOpenApi();
+builder
+    .Services.AddOpenApi();
 
 builder.Services.ConfigureServices();
 builder.Services.ConfigureRepositories();
 builder.Services.ConfigureValidatos();
+builder.Services.AddProblemDetails(c =>
+{
+    c.CustomizeProblemDetails = context =>
+    {
+        context.ProblemDetails.Instance = $"{context.HttpContext.Request.Method} {context.HttpContext.Request.Path}";
+    };
+});
 var app = builder.Build();
 
+app.UseRouting();
 app.MapOpenApi();
 app.MapScalarApiReference();
-
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseForwardedHeaders(new ForwardedHeadersOptions()
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
 
+app.MapControllers();
 app.Run();

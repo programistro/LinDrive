@@ -5,7 +5,7 @@ namespace LinDrive.Core.Interfaces;
 
 public interface IAccessTokenRepository
 {
-    Task<Result<AccessToken>?> GetTokenAsync(string token, CancellationToken cancellationToken);
+    Task<Result<AccessToken>?> GetByTokenAsync(string token, CancellationToken cancellationToken);
     
     Task AddAsync(AccessToken token, CancellationToken cancellationToken);
     

@@ -4,8 +4,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="LinDrive.Desktop.MainWindow"
-        Title="LinDrive.Desktop">
-        <Grid>
-            
-        </Grid>
+        Title="LinDrive.Desktop"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        ExtendClientAreaToDecorationsHint="True">
+    <!-- <Grid> -->
+    
+    <!-- </Grid> -->
+    <Panel>
+        <ExperimentalAcrylicBorder IsHitTestVisible="False">
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial
+                    BackgroundSource="Digger"
+                    TintColor="Black"
+                    TintOpacity="1"
+                    MaterialOpacity="0.65" />
+            </ExperimentalAcrylicBorder.Material>
+        </ExperimentalAcrylicBorder>
+        
+        <TextBox Name="TextBox" Watermark="Email" HorizontalAlignment="Center"
+                 VerticalAlignment="Center" Margin="0,0,0,70" Width="210"/>
+        <Button HorizontalAlignment="Center" Click="Button_OnClick">Login</Button>
+    </Panel>
 </Window>

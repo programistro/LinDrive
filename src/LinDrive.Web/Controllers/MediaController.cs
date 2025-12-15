@@ -56,7 +56,7 @@ public class MediaController : ControllerBase
             if (findUserId == null)
                 return NotFound("Пользователь с указанным id не найден.");
 
-            var findUser = await _userService.GetByIdAsync(findUserId.Value, cancellationToken);
+            var findUser = await _userService.GetByEmailAsync(findUserId, cancellationToken);
             
             var path = $@"files/{findUser.Email}/{name}";
 
