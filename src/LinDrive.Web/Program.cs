@@ -1,9 +1,9 @@
-using Atlant.Application.Interfaces;
-using Atlant.Infractructure.Repositories;
+using System.Text.Json.Serialization;
 using LinDrive.Application.Interfaces;
 using LinDrive.Application.Services;
 using LinDrive.Application.Services.IO.Interfaces;
 using LinDrive.Application.Services.IO.Services;
+using LinDrive.Core;
 using LinDrive.Core.Interfaces;
 using LinDrive.Infrastructure;
 using LinDrive.Infrastructure.Data;
@@ -12,10 +12,33 @@ using LinDrive.Web;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Minio;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+DotNetEnv.Env.Load();
 
+foreach (var kvp in builder.Configuration.AsEnumerable())
+{
+    Console.WriteLine($"{kvp.Key} = {kvp.Value}");
+}
+
+var logger = builder.Services.BuildServiceProvider().GetRequiredService<ILogger<Program>>();
+logger.LogInformation("Application started");
+
+builder.Services.Configure<S3Options>(option =>
+{
+    option.AccessKey = Environment.GetEnvironmentVariable("AWS_ACCESS_KEY");
+    option.Bucket = Environment.GetEnvironmentVariable("AWS_BUCKET_NAME");
+    option.SecretKey = Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY");
+    option.ServiceUrl = Environment.GetEnvironmentVariable("AWS_SERVICE_URL");
+});
+builder.Services.AddMinio(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY"), Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY"));
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis");
+});
+builder.Configuration.AddEnvironmentVariables();
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -38,7 +61,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
         };
     });
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+    options.LowercaseQueryStrings = true;
+});
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString)
@@ -46,6 +83,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddOpenApi();
 
 builder.Services.ConfigureServices();
+builder.Services.ConfigureRepositories();
+builder.Services.ConfigureValidatos();
 var app = builder.Build();
 
 app.MapOpenApi();
