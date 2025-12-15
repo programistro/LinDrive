@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinDrive.Core", "src\LinDri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinDrive.Contracts", "src\LinDrive.Contracts\LinDrive.Contracts.csproj", "{2025FA53-617C-4CEC-B33D-1681CE8602C0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{7971E4CA-04D0-4E08-9554-0C8FED9111EE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7971E4CA-04D0-4E08-9554-0C8FED9111EE}"
 	ProjectSection(SolutionItems) = preProject
 		Dockerfile = Dockerfile
 		src\.dockerignore = src\.dockerignore
