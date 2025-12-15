@@ -1,31 +1,11 @@
-<!-- <Application xmlns="https://github.com/avaloniaui" -->
-<!--              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" -->
-<!--              x:Class="LinDrive.Desktop.App" -->
-<!--              RequestedThemeVariant="Default"> -->
-<!--              ~1~ "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. @1@ -->
-<!-- -->
-<!--     <Application.Styles> -->
-<!--         <FluentTheme /> -->
-<!--     </Application.Styles> -->
-<!--               -->
-<!--     ~1~ <TrayIcon.Icons> @1@ -->
-<!--     ~1~     <TrayIcons> @1@ -->
-<!--     ~1~         <TrayIcon Icon="/Assets/avalonia-logo.ico"  @1@ -->
-<!--     ~1~                   ToolTipText="Avalonia Tray Icon ToolTip"> @1@ -->
-<!--     ~1~             <TrayIcon.Menu> @1@ -->
-<!--     ~1~                 <NativeMenu> @1@ -->
-<!--     ~1~                     <NativeMenuItem Header="Settings"> @1@ -->
-<!--     ~1~                         <NativeMenu> @1@ -->
-<!--     ~1~                             <NativeMenuItem Header="Option 1"   /> @1@ -->
-<!--     ~1~                             <NativeMenuItem Header="Option 2"   /> @1@ -->
-<!--     ~1~                             <NativeMenuItemSeparator /> @1@ -->
-<!--     ~1~                             <NativeMenuItem Header="Option 3"  /> @1@ -->
-<!--     ~1~                         </NativeMenu> @1@ -->
-<!--     ~1~                     </NativeMenuItem> @1@ -->
-<!--     ~1~                     <NativeMenuItem Header="Exit" Click="ExitClick" /> @1@ -->
-<!--     ~1~                 </NativeMenu> @1@ -->
-<!--     ~1~             </TrayIcon.Menu> @1@ -->
-<!--     ~1~         </TrayIcon> @1@ -->
-<!--     ~1~     </TrayIcons> @1@ -->
-<!--     ~1~ </TrayIcon.Icons> @1@ -->
-<!-- </Application> -->
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="LinDrive.Desktop.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+       <Application.Styles>
+           <FluentTheme />
+           <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+       </Application.Styles>
+</Application>
