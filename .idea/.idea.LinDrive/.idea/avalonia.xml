@@ -6,6 +6,7 @@
         <entry key="src/LinDrive.Desktop/App.axaml" value="src/LinDrive.Desktop/LinDrive.Desktop.csproj" />
         <entry key="src/LinDrive.Desktop/MainWindow.axaml" value="src/LinDrive.Desktop/LinDrive.Desktop.csproj" />
         <entry key="src/LinDrive.Desktop/Views/MainWindow.axaml" value="src/LinDrive.Desktop/LinDrive.Desktop.csproj" />
+        <entry key="src/LinDrive.Desktop/Views/SeedPhasePage.axaml" value="src/LinDrive.Desktop/LinDrive.Desktop.csproj" />
         <entry key="src/LinDrive.Desktop/Views/SeedPhaseWindow.axaml" value="src/LinDrive.Desktop/LinDrive.Desktop.csproj" />
       </map>
     </option>
