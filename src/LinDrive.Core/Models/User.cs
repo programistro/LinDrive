@@ -10,9 +10,7 @@ public class User
     
     public string Email { get; set; }
     
-    public string SeedHash { get; set; }
-    
-    public string SeedSalt { get; set; }
+    public string PasswordHash { get; set; }
 
     public List<UserFile> Files = new List<UserFile>();
     
