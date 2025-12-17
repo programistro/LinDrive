@@ -36,4 +36,20 @@ public class AuthController : ControllerBase
         
         return Ok(authResult.Value);
     }
+
+    [HttpPost("login")]
+    private async Task<IActionResult> Login(AuthRequest request, CancellationToken cancellationToken)
+    {
+        var userAgent = HttpContext.Request.Headers["User-Agent"];
+        var ip = HttpContext.Request.Headers["X-Forwarded-For"];
+
+        var authResult =
+            await _authService.Authenticate(request, AuthType.Login, new UserAgent(ip: ip, agent: userAgent),
+                cancellationToken); 
+        
+        if(authResult.IsFailure)
+            return BadRequest(authResult.Error);
+        
+        return Ok(authResult.Value);
+    }
 }
