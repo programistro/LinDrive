@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using FluentValidation.Internal;
 using LinDrive.Application.Interfaces;
 using LinDrive.Application.Services;
 using LinDrive.Application.Services.IO.Interfaces;
@@ -15,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Minio;
 using Scalar.AspNetCore;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Enums;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 DotNetEnv.Env.Load();
@@ -93,6 +96,29 @@ builder.Services.AddProblemDetails(c =>
     {
         context.ProblemDetails.Instance = $"{context.HttpContext.Request.Method} {context.HttpContext.Request.Path}";
     };
+});
+builder.Services.AddFluentValidationAutoValidation(config =>
+{
+    // Disable the built-in .NET model (data annotations) validation.
+    config.DisableBuiltInModelValidation = true;
+
+    // Only validate controllers decorated with the `AutoValidation` attribute.
+    config.ValidationStrategy = ValidationStrategy.All;
+
+    // Enable validation for parameters bound from `BindingSource.Body` binding sources.
+    config.EnableBodyBindingSourceAutomaticValidation = true;
+
+    // Enable validation for parameters bound from `BindingSource.Form` binding sources.
+    config.EnableFormBindingSourceAutomaticValidation = true;
+
+    // Enable validation for parameters bound from `BindingSource.Query` binding sources.
+    config.EnableQueryBindingSourceAutomaticValidation = true;
+
+    // Enable validation for parameters bound from `BindingSource.Path` binding sources.
+    config.EnablePathBindingSourceAutomaticValidation = true;
+
+    // Enable validation for parameters bound from 'BindingSource.Custom' binding sources.
+    config.EnableCustomBindingSourceAutomaticValidation = true;
 });
 var app = builder.Build();
 

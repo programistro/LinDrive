@@ -12,35 +12,19 @@ public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
     private readonly ILogger<UserService> _logger;
-    private readonly IMemoryCache _memoryCache;
-
-    public UserService(IUserRepository userRepository, ILogger<UserService> logger, IMemoryCache memoryCache)
+    public UserService(IUserRepository userRepository, ILogger<UserService> logger)
     {
         _userRepository = userRepository;
         _logger = logger;
-        _memoryCache = memoryCache;
     }
 
-    public async Task<User> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        _memoryCache.TryGetValue(id, out User? user);
-
-        if (user == null)
-        {
-            user = await _userRepository.GetByIdAsync(id, cancellationToken);
-
-            if (user != null)
-            {
-                _memoryCache.Set(user.Id, user, new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromHours(5)));
-                _logger.LogInformation("get user");
-                return user;
-            }
-        }
-        _logger.LogInformation("get user form cashe");
+        var user = await _userRepository.GetByIdAsync(id, cancellationToken);
         return user;
     }
 
-    public async Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken)
+    public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetByEmailAsync(email, cancellationToken);
 
