@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="DotNetEnv" Version="3.1.1" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.1" />
+        <PackageReference Include="Minio" Version="7.0.0" />
+        <PackageReference Include="Scalar.AspNetCore" Version="2.11.6" />
+        <PackageReference Include="SharpGrip.FluentValidation.AutoValidation.Mvc" Version="1.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LinDrive.Infrastructure\LinDrive.Infrastructure.csproj" />
+      <ProjectReference Include="..\LinDrive.Application\LinDrive.Application.csproj" />
+      <ProjectReference Include="..\LinDrive.Contracts\LinDrive.Contracts.csproj" />
+      <ProjectReference Include="..\LinDrive.Core\LinDrive.Core.csproj" />
+      <ProjectReference Include="..\LinDrive.Infrastructure\LinDrive.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>
