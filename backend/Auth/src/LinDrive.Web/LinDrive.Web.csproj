@@ -23,6 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\LinDrive.Shared\LinDrive.Shared.csproj" />
       <ProjectReference Include="..\LinDrive.Infrastructure\LinDrive.Infrastructure.csproj" />
       <ProjectReference Include="..\LinDrive.Application\LinDrive.Application.csproj" />
       <ProjectReference Include="..\LinDrive.Contracts\LinDrive.Contracts.csproj" />

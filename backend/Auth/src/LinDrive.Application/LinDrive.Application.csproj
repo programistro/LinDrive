@@ -14,6 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\LinDrive.Shared\LinDrive.Shared.csproj" />
       <ProjectReference Include="..\LinDrive.Contracts\LinDrive.Contracts.csproj" />
       <ProjectReference Include="..\LinDrive.Core\LinDrive.Core.csproj" />
       <ProjectReference Include="..\LinDrive.Infrastructure\LinDrive.Infrastructure.csproj" />
