@@ -6,13 +6,13 @@ namespace LinDrive.Application.Extensions;
 
 public static class FileExtension
 {
-    public static List<UserFileDto> FilesToDto(this List<UserFile> files)
+    public static List<UserFileResponse> ToFilesResponses(this List<UserFile> files)
     {
-        List<UserFileDto> dtos = new List<UserFileDto>();
+        List<UserFileResponse> dtos = new List<UserFileResponse>();
         
         foreach (var item in files)
         {
-            dtos.Add(new  UserFileDto
+            dtos.Add(new  UserFileResponse
             {
                 ContentType = item.ContentType,
                 Extension = item.Extension,

@@ -1,16 +1,19 @@
 using LinDrive.Contracts.Dtos;
+using LinDrive.Contracts.Responses;
 using LinDrive.Core.Models;
 
 namespace LinDrive.Application.Extensions;
 
 public static class UserExtension
 {
-    public static UserResponseDto ToResponseDto(this User user)
+    public static UserResponse ToUserResponse(this User user)
     {
-        return new UserResponseDto()
+        return new UserResponse()
         {
             Email = user.Email,
-            Id = user.Id,
+            AccessToken = user.AccessToken,
+            AccessTokens = user.AccessTokens,
+            Files = user.Files.ToFilesResponses()
         };
     }
 }

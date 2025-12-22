@@ -1,6 +1,6 @@
 namespace LinDrive.Contracts.Dtos.IO;
 
-public record UserFileDto
+public record UserFileResponse
 {
     public string Name { get; set; }
     

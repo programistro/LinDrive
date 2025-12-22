@@ -1,10 +1,12 @@
 using LinDrive.Application.Interfaces;
 using LinDrive.Contracts.Dtos;
 using LinDrive.Contracts.Requestes;
+using LinDrive.Core.Models;
 using LinDrive.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Attributes;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace LinDrive.Web.Controllers;
 
@@ -57,6 +59,7 @@ public class AuthController : ControllerBase
         return Ok(authResult.Value);
     }
 
+    [SwaggerResponse(200, "Success", typeof(User))]
     [Authorize]
     [HttpGet("me")]
     public async Task<IActionResult> Me(CancellationToken cancellationToken)
