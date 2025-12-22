@@ -20,14 +20,12 @@
         <PackageReference Include="Minio" Version="7.0.0" />
         <PackageReference Include="Scalar.AspNetCore" Version="2.11.6" />
         <PackageReference Include="SharpGrip.FluentValidation.AutoValidation.Mvc" Version="1.5.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.1.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Shared\LinDrive.Contracts\LinDrive.Contracts.csproj" />
-      <ProjectReference Include="..\..\..\Shared\LinDrive.Shared\LinDrive.Shared.csproj" />
       <ProjectReference Include="..\LinDrive.Infrastructure\LinDrive.Infrastructure.csproj" />
       <ProjectReference Include="..\LinDrive.Application\LinDrive.Application.csproj" />
-      <ProjectReference Include="..\LinDrive.Contracts\LinDrive.Contracts.csproj" />
       <ProjectReference Include="..\LinDrive.Core\LinDrive.Core.csproj" />
       <ProjectReference Include="..\LinDrive.Infrastructure\LinDrive.Infrastructure.csproj" />
     </ItemGroup>

@@ -3,12 +3,12 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using LinDrive.Application.Interfaces;
-using LinDrive.Application.Results;
 using LinDrive.Contracts.Dtos;
 using LinDrive.Core;
 using LinDrive.Core.Interfaces;
 using LinDrive.Core.Models;
 using LinDrive.Infrastructure;
+using LinDrive.Shared;
 using LinDrive.Shared.Interfaces;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -102,7 +102,7 @@ public class TokenService : ITokenService
         return token;
     }
 
-    public string? GetUserIdFromToken(string token, CancellationToken cancellationToken)
+    public string? GetEmailFromToken(string token, CancellationToken cancellationToken)
     {
         var handler = new JwtSecurityTokenHandler();
         var jwtToken = handler.ReadJwtToken(token);
@@ -112,6 +112,21 @@ public class TokenService : ITokenService
             return null;
         
         return email;
+    }
+
+    public async Task<Result<User>> GetUserFromToken(string token, CancellationToken cancellationToken)
+    {
+        var email = GetEmailFromToken(token, cancellationToken);
+        
+        if(string.IsNullOrEmpty(email))
+            return Result<User>.Failure("Email not found", 404);
+        
+        var user = await _userService.GetByEmailAsync(email, cancellationToken);
+        
+        if (user == null)
+            return Result<User>.Failure("User not found", 404);
+        
+        return Result<User>.Success(user);
     }
 
     public string? GetRoleFromToken(string token, CancellationToken cancellationToken)

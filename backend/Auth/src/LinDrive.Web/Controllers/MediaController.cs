@@ -51,7 +51,7 @@ public class MediaController : ControllerBase
     {
         if (HttpContext.Request.Cookies.TryGetValue("jwt_token", out var jwtToken))
         {
-            var findUserId = _tokenService.GetUserIdFromToken(jwtToken, cancellationToken);
+            var findUserId = _tokenService.GetEmailFromToken(jwtToken, cancellationToken);
 
             if (findUserId == null)
                 return NotFound("Пользователь с указанным id не найден.");

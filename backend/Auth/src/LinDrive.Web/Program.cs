@@ -1,14 +1,7 @@
 using System.Text.Json.Serialization;
-using FluentValidation.Internal;
-using LinDrive.Application.Interfaces;
-using LinDrive.Application.Services;
-using LinDrive.Application.Services.IO.Interfaces;
-using LinDrive.Application.Services.IO.Services;
 using LinDrive.Core;
-using LinDrive.Core.Interfaces;
 using LinDrive.Infrastructure;
 using LinDrive.Infrastructure.Data;
-using LinDrive.Infrastructure.Repositories;
 using LinDrive.Web;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpOverrides;

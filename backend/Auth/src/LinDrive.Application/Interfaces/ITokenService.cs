@@ -1,6 +1,6 @@
-using LinDrive.Application.Results;
 using LinDrive.Contracts.Dtos;
 using LinDrive.Core.Models;
+using LinDrive.Shared;
 
 namespace LinDrive.Application.Interfaces;
 
@@ -12,7 +12,9 @@ public interface ITokenService
 
     public string GenerateJwtToken(User user);
     
-    string? GetUserIdFromToken(string token, CancellationToken cancellationToken);
+    string? GetEmailFromToken(string token, CancellationToken cancellationToken);
+    
+    Task<Result<User>> GetUserFromToken(string token, CancellationToken cancellationToken);
     
     string? GetRoleFromToken(string token, CancellationToken cancellationToken);
     
