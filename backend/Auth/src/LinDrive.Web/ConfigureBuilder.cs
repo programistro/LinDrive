@@ -19,7 +19,6 @@ public static class ConfigureBuilder
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IMediaService, MediaService>();
             services.AddScoped<IInfoService, InfoService>();
             services.AddScoped<ICryptoService, CryptoService>();
             services.AddScoped<IAuthService, AuthService>();
