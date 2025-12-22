@@ -1,7 +1,10 @@
 <Solution>
+  <Folder Name="/shared/">
+    <Project Path="../Shared/LinDrive.Contracts/LinDrive.Contracts.csproj" />
+    <Project Path="../Shared/LinDrive.Shared/LinDrive.Shared.csproj" />
+  </Folder>
   <Folder Name="/Solution Items/" />
   <Folder Name="/src/">
-    <Project Path="../Shared/LinDrive.Shared/LinDrive.Shared.csproj" />
     <Project Path="src/LinDrive.Application/LinDrive.Application.csproj" />
     <Project Path="src/LinDrive.Core/LinDrive.Core.csproj" />
     <Project Path="src/LinDrive.Infrastructure/LinDrive.Infrastructure.csproj" />
