@@ -23,14 +23,6 @@ foreach (var kvp in builder.Configuration.AsEnumerable())
 var logger = builder.Services.BuildServiceProvider().GetRequiredService<ILogger<Program>>();
 logger.LogInformation("Application started");
 
-builder.Services.Configure<S3Options>(option =>
-{
-    option.AccessKey = Environment.GetEnvironmentVariable("AWS_ACCESS_KEY");
-    option.Bucket = Environment.GetEnvironmentVariable("AWS_BUCKET_NAME");
-    option.SecretKey = Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY");
-    option.ServiceUrl = Environment.GetEnvironmentVariable("AWS_SERVICE_URL");
-});
-builder.Services.AddMinio(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY"), Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY"));
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration.GetConnectionString("Redis");

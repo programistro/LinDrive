@@ -1,4 +1,4 @@
-namespace LinDrive.Core;
+namespace FileService.Core;
 
 public record S3Options
 {

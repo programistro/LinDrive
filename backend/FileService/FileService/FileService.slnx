@@ -5,6 +5,7 @@
   </Folder>
   <Folder Name="/src/">
     <Project Path="FileService.Appliation/FileService.Appliation.csproj" />
+    <Project Path="FileService.Core/FileService.Core.csproj" />
     <Project Path="FileService.Web/FileService.Web.csproj" />
   </Folder>
 </Solution>
