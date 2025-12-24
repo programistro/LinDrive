@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using FileService.Core;
+using FileService.Web;
 using Minio;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,7 +38,7 @@ builder.Services.AddRouting(options =>
     options.LowercaseQueryStrings = true;
 });
 builder.Services.AddOpenApi();
-
+builder.Services.ConfigureServices();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -48,7 +49,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-app.UseAuthorization();
+// app.UseAuthorization();
 
 app.MapControllers();
 

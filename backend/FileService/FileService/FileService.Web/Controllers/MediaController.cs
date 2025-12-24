@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FileService.Web.Controllers;
 
-[Authorize]
+// [Authorize]
 [ApiController]
 [Route("[controller]")]
 public class MediaController : ControllerBase
@@ -18,6 +18,12 @@ public class MediaController : ControllerBase
     {
         _logger = logger;
         _mediaService = mediaService;
+    }
+
+    [HttpGet]
+    public IActionResult Get()
+    {
+        return Ok("okay");
     }
 
     [HttpPost]
