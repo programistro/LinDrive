@@ -6,5 +6,5 @@ public record UploadFileDto
 {
     public required IFormFile File { get; set; }
     
-    public required string Email { get; set; }
+    public required string Bucket { get; set; }
 }

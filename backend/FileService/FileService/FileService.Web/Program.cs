@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using FileService.Core;
 using FileService.Web;
 using Minio;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 DotNetEnv.Env.Load();
@@ -21,7 +22,11 @@ builder.Services.Configure<S3Options>(option =>
     option.SecretKey = Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY");
     option.ServiceUrl = Environment.GetEnvironmentVariable("AWS_SERVICE_URL");
 });
-builder.Services.AddMinio(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY"), Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY"));
+builder.Services.AddMinio(client => client
+    .WithCredentials(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY"),
+        Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY"))
+    .WithEndpoint(Environment.GetEnvironmentVariable("AWS_SERVICE_URL"), 9000)
+    .WithSSL(false));
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -39,6 +44,10 @@ builder.Services.AddRouting(options =>
 });
 builder.Services.AddOpenApi();
 builder.Services.ConfigureServices();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.EnableAnnotations();
+});
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -46,10 +55,14 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.MapScalarApiReference();
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-// app.UseAuthorization();
+app.UseAuthorization();
 
 app.MapControllers();
 

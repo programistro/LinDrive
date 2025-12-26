@@ -1,4 +1,5 @@
-﻿using LinDrive.Application.Services.IO.Interfaces;
+﻿using FileService.Appliation.Services.IO;
+using LinDrive.Application.Services.IO.Interfaces;
 using LinDrive.Contracts.Dtos.IO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,26 +13,31 @@ public class MediaController : ControllerBase
 {
     private readonly ILogger<MediaController> _logger;
     private readonly IMediaService _mediaService;
+    private readonly IS3Service _s3Service;
 
     public MediaController(ILogger<MediaController> logger, 
-        IMediaService mediaService)
+        IMediaService mediaService, 
+        IS3Service s3Service)
     {
         _logger = logger;
         _mediaService = mediaService;
+        _s3Service = s3Service;
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public IActionResult Get(string test, string file)
     {
-        return Ok("okay");
+        var result = _s3Service.GetFile(test, file, CancellationToken.None);
+        
+        return Ok(result.Result);
     }
 
     [HttpPost]
     public async Task<IActionResult> UploadFile(UploadFileDto dto, CancellationToken cancellationToken)
     {
-        await _mediaService.UploadFile(dto, cancellationToken);
+        var result = await _s3Service.PutFile(bucketName:dto.Bucket, dto.File.FileName, dto.File.OpenReadStream(), cancellationToken);
 
-        return Ok();
+        return Ok(result);
     }
     
     // [HttpGet("{name}")]

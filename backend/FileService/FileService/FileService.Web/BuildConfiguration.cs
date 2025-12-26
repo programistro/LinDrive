@@ -9,6 +9,7 @@ public static class BuildConfiguration
     {
         public IServiceCollection ConfigureServices()
         {
+            services.AddScoped<IS3Service, S3Service>();
             services.AddScoped<IMediaService, MediaService>();
             return services;
         }

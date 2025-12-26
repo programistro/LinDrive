@@ -10,7 +10,7 @@ public class MediaService : IMediaService
         if (dto.File.Length > 0)
         {
             var fileName = dto.File.FileName;
-            var path = $@"files/{dto.Email}/{fileName}";
+            var path = $@"files/{fileName}";
             
             var directory = Path.GetDirectoryName(path);
 
