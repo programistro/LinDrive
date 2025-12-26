@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Minio;
 using Minio.DataModel.Args;
+using Minio.DataModel.Result;
 
 namespace FileService.Appliation.Services.IO;
 
@@ -15,6 +16,13 @@ public class S3Service : IS3Service
     {
         _logger = logger;
         _minIo = minIo;
+    }
+
+    public async Task<ListAllMyBucketsResult> GetListBuckets(CancellationToken cancellationToken)
+    {
+        var result = await _minIo.ListBucketsAsync(cancellationToken);
+
+        return result;
     }
 
     public async Task<string> GetFile(string bucketName, string fileName, CancellationToken cancellationToken)

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FileService.Web.Controllers;
 
-// [Authorize]
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class MediaController : ControllerBase
@@ -24,12 +24,12 @@ public class MediaController : ControllerBase
         _s3Service = s3Service;
     }
 
-    [HttpGet]
-    public IActionResult Get(string test, string file)
+    [HttpGet("buckets")]
+    public async Task<IActionResult> GetBuckets(CancellationToken cancellationToken)
     {
-        var result = _s3Service.GetFile(test, file, CancellationToken.None);
+        var result = await _s3Service.GetListBuckets(cancellationToken);
         
-        return Ok(result.Result);
+        return Ok(result);
     }
 
     [HttpPost]

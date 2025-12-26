@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
 using FileService.Core;
 using FileService.Web;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Minio;
 using Scalar.AspNetCore;
 
@@ -44,9 +46,38 @@ builder.Services.AddRouting(options =>
 });
 builder.Services.AddOpenApi();
 builder.Services.ConfigureServices();
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            // указывает, будет ли валидироваться издатель при валидации токена
+            ValidateIssuer = true,
+            // строка, представляющая издателя
+            ValidIssuer = AuthOptions.ISSUER,
+            // будет ли валидироваться потребитель токена
+            ValidateAudience = true,
+            // установка потребителя токена
+            ValidAudience = AuthOptions.AUDIENCE,
+            // будет ли валидироваться время существования
+            ValidateLifetime = true,
+            // установка ключа безопасности
+            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+            // валидация ключа безопасности
+            ValidateIssuerSigningKey = true,
+        };
+    });
 builder.Services.AddSwaggerGen(c =>
 {
     c.EnableAnnotations();
+});
+builder.Services.AddProblemDetails(c =>
+{
+    c.CustomizeProblemDetails = context =>
+    {
+        context.ProblemDetails.Instance = $"{context.HttpContext.Request.Method} {context.HttpContext.Request.Path}";
+    };
 });
 var app = builder.Build();
 
