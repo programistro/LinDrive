@@ -40,6 +40,7 @@ public class S3Service : IS3Service
         var result = await _minIo.PutObjectAsync(new PutObjectArgs()
             .WithBucket(bucketName)
             .WithObject(fileName)
+            .WithObjectSize(stream.Length)
             .WithStreamData(stream), cancellationToken);
         
         return result.ObjectName;
