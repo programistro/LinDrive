@@ -20,12 +20,12 @@ public class UserRepository : IUserRepository
             .FirstOrDefaultAsync(x => x.Id == userId,  cancellationToken);
     }
 
-    public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)
+    public async Task<User?> GetByUseridAsync(string userId, CancellationToken cancellationToken)
     {
         return await _context.Users
-            .FirstOrDefaultAsync(x => x.Email == email,  cancellationToken);
+            .FirstOrDefaultAsync(x => x.UserId == userId,  cancellationToken);
     }
-    
+
     public async Task AddAsync(User user, CancellationToken cancellationToken)
     {
         await _context.Users.AddAsync(user, cancellationToken);

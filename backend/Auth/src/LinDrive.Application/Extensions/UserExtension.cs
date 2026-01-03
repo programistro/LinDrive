@@ -10,7 +10,7 @@ public static class UserExtension
     {
         return new UserResponse()
         {
-            Email = user.Email,
+            UserId = user.UserId,
             AccessToken = user.AccessToken,
             AccessTokens = user.AccessTokens,
             Files = user.Files.ToFilesResponses()

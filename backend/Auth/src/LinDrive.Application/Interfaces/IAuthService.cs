@@ -8,5 +8,5 @@ namespace LinDrive.Application.Interfaces;
 
 public interface IAuthService
 {
-    Task<Result<User>> Authenticate(AuthRequest request, AuthType authType, UserAgent userAgent, CancellationToken cancellationToken);
+    Task<Result<User>> Authenticate(AuthRequest request, UserAgent userAgent, CancellationToken cancellationToken);
 }

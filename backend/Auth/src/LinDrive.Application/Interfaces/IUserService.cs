@@ -5,8 +5,7 @@ namespace LinDrive.Application.Interfaces;
 public interface IUserService
 {
     Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-    
-    Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken);
+    Task<User?> GetByUserIdAsync(string userId, CancellationToken cancellationToken);
     
     Task<User?> AddAsync(User user, CancellationToken cancellationToken);
     

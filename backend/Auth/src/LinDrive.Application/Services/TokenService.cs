@@ -83,7 +83,7 @@ public class TokenService : ITokenService
     {
         var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Email, user.Email),
+            new Claim(JwtRegisteredClaimNames.Email, user.UserId),
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
         };
 
@@ -116,12 +116,12 @@ public class TokenService : ITokenService
 
     public async Task<Result<User>> GetUserFromToken(string token, CancellationToken cancellationToken)
     {
-        var email = GetEmailFromToken(token, cancellationToken);
+        var userId = GetEmailFromToken(token, cancellationToken);
         
-        if(string.IsNullOrEmpty(email))
+        if(string.IsNullOrEmpty(userId))
             return Result<User>.Failure("Email not found", 404);
         
-        var user = await _userService.GetByEmailAsync(email, cancellationToken);
+        var user = await _userService.GetByUserIdAsync(userId, cancellationToken);
         
         if (user == null)
             return Result<User>.Failure("User not found", 404);

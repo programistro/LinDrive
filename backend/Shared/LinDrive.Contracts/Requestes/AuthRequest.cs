@@ -2,7 +2,9 @@ namespace LinDrive.Contracts.Requestes;
 
 public record AuthRequest
 {
-    public required string Email { get; set; }
+    public required string UserId { get; set; }
     
-    public required string Password { get; set; }
+    public required string Challenge { get; set; }
+    
+    public required string PubKey { get; set; }
 }

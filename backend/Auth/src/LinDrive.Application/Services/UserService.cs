@@ -26,9 +26,9 @@ public class UserService : IUserService
         return user;
     }
 
-    public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)
+    public async Task<User?> GetByUserIdAsync(string userId, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetByEmailAsync(email, cancellationToken);
+        var user = await _userRepository.GetByUseridAsync(userId, cancellationToken);
 
         if (user is not null)
         {

@@ -4,7 +4,7 @@ namespace LinDrive.Contracts.Responses;
 
 public record UserResponse
 {
-    public required string Email { get; set; }
+    public required string UserId { get; set; }
     
     public List<UserFileResponse> Files { get; set; }
     
