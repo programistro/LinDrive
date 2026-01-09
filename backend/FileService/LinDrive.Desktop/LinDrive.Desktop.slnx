@@ -2,6 +2,7 @@
   <Folder Name="/shared/">
     <Project Path="../../Shared/LinDrive.Contracts/LinDrive.Contracts.csproj" />
     <Project Path="../../Shared/LinDrive.Shared/LinDrive.Shared.csproj" />
+    <Project Path="LinDrive.Application/LinDrive.Application.csproj" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="LinDrive.Desktop/LinDrive.Desktop.csproj" />

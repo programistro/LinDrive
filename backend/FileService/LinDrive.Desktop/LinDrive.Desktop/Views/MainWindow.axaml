@@ -3,6 +3,7 @@
         xmlns:vm="using:LinDrive.Desktop.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:LinDrive.Desktop.Controls"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="LinDrive.Desktop.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -25,6 +26,7 @@
                     MaterialOpacity="0.65" />
             </ExperimentalAcrylicBorder.Material>
         </ExperimentalAcrylicBorder>
+        
     </Panel>
 
 </Window>

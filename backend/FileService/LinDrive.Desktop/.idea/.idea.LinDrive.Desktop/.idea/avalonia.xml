@@ -3,8 +3,16 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="LinDrive.Desktop/Controls/ConfirmRecoveryWordsView.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
+        <entry key="LinDrive.Desktop/Controls/ConfirmWordsView.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
+        <entry key="LinDrive.Desktop/Controls/RecoveryWordViewModel.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
+        <entry key="LinDrive.Desktop/Controls/Wasabi/ContentArea.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
+        <entry key="LinDrive.Desktop/Controls/Wasabi/TagControl.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
+        <entry key="LinDrive.Desktop/Styles/Separator.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
+        <entry key="LinDrive.Desktop/Styles/Wasabi/Fluent.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
         <entry key="LinDrive.Desktop/Views/LoginView.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
         <entry key="LinDrive.Desktop/Views/MainWindow.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
+        <entry key="LinDrive.Desktop/Views/Wasabi/ConfirmRecoveryWordsView.axaml" value="LinDrive.Desktop/LinDrive.Desktop.csproj" />
       </map>
     </option>
   </component>
