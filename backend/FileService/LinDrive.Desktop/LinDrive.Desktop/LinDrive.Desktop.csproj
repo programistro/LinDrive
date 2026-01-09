@@ -10,25 +10,37 @@
     <ItemGroup>
         <Folder Include="Controls\" />
         <Folder Include="Converters\" />
-        <Folder Include="Models\"/>
-        <AvaloniaResource Include="Assets\**"/>
+        <Folder Include="Models\" />
+        <AvaloniaResource Include="Assets\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.3.10"/>
-        <PackageReference Include="Avalonia.Desktop" Version="11.3.10"/>
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.10"/>
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.10"/>
+        <PackageReference Include="Avalonia" Version="11.3.10" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.3.10" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.10" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.10" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Include="Avalonia.Diagnostics" Version="11.3.10">
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="10.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.1">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
-        <PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8"/>
+        <PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
+        <PackageReference Include="SQLitePCLRaw.bundle_e_sqlcipher" Version="2.1.11" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\LinDrive.Application\LinDrive.Application.csproj" />
+      <ProjectReference Include="..\LinDrive.Infrastructure\LinDrive.Infrastructure.csproj" />
     </ItemGroup>
 </Project>

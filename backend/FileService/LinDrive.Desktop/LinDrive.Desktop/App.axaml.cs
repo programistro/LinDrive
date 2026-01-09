@@ -4,6 +4,7 @@ using Avalonia.Markup.Xaml;
 using LinDrive.Desktop.ViewModels;
 using LinDrive.Desktop.Views;
 using Microsoft.Extensions.DependencyInjection;
+using SQLitePCL;
 
 namespace LinDrive.Desktop;
 
@@ -16,10 +17,12 @@ public partial class App : Avalonia.Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        raw.SetProvider(new SQLite3Provider_e_sqlcipher());
+        
         var collection = new ServiceCollection();
         collection.ConfigureServices();
+        collection.ConfigureRepositories();
 
-        // Creates a ServiceProvider containing services from the provided IServiceCollection
         var services = collection.BuildServiceProvider();
 
         var vm = services.GetRequiredService<MainWindowViewModel>();
